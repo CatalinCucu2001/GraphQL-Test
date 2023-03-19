@@ -5,6 +5,7 @@ import com.personalproject.graphqltest.entity.PlayerEntity;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class PlayerController {
     private final PlayerService service;
 
     @PostMapping
-    @QueryMapping
+    @MutationMapping
     public PlayerEntity createPlayer(@RequestBody @Argument PlayerDto playerDto) {
         return service.createPlayer(playerDto);
     }

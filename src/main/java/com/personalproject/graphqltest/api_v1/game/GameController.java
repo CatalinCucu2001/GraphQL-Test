@@ -7,6 +7,7 @@ import com.personalproject.graphqltest.entity.GameEntity;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class GameController {
     private final GameService service;
 
     @PostMapping
-    @QueryMapping
+    @MutationMapping
     public GameEntity createGame(@RequestBody @Argument CreateGameDto createGameDto) {
         return service.createGame(createGameDto);
     }
@@ -32,7 +33,7 @@ public class GameController {
     }
 
     @PostMapping("/add-player")
-    @QueryMapping
+    @MutationMapping
     public GameEntity addPlayerToGame(@RequestBody @Argument AddPlayerDto addPlayerDto) {
         return service.addPlayerToGame(addPlayerDto);
     }
