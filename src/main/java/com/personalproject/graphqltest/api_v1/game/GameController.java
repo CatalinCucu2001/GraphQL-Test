@@ -21,7 +21,7 @@ public class GameController {
 
     @PostMapping
     @QueryMapping
-    public GameEntity createGame(@RequestBody CreateGameDto createGameDto) {
+    public GameEntity createGame(@RequestBody @Argument CreateGameDto createGameDto) {
         return service.createGame(createGameDto);
     }
 
@@ -33,7 +33,7 @@ public class GameController {
 
     @PostMapping("/add-player")
     @QueryMapping
-    public GameEntity addPlayerToGame(@RequestBody AddPlayerDto addPlayerDto) {
+    public GameEntity addPlayerToGame(@RequestBody @Argument AddPlayerDto addPlayerDto) {
         return service.addPlayerToGame(addPlayerDto);
     }
 
