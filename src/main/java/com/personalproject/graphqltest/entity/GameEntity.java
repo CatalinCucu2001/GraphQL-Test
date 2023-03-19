@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -20,5 +21,5 @@ public class GameEntity {
             joinColumns = @JoinColumn(name = "game_id"),
             inverseJoinColumns = @JoinColumn(name = "player_id")
     )
-    private Set<PlayerEntity> players;
+    private Set<PlayerEntity> players = new HashSet<>();
 }
