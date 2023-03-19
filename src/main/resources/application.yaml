@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    username: postgres
+    password: yaev7GHD7z
+    url: jdbc:postgresql://localhost:5432/database
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+  graphql:
+    graphiql:
+      enabled: true
+server:
+  port: 8081

@@ -1,0 +1,18 @@
+# Here u can define all names: Return type methods from controllers
+type Query {
+    players: [Player]
+    games: [Game]
+}
+
+# All entities
+type Player {
+    id: ID!
+    firsName: String!
+    lastName: String
+}
+
+type Game {
+    id: ID!
+    name: String!
+    players: [Player]
+}
