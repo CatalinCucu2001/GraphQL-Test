@@ -5,6 +5,7 @@ import com.personalproject.graphqltest.entity.PlayerEntity;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,16 +13,18 @@ import java.util.List;
 @RestController
 @RequestMapping("/player")
 @Tag(name = "Player manager")
-@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@RequiredArgsConstructor
 public class PlayerController {
     private final PlayerService service;
 
     @PostMapping
+    @QueryMapping
     public PlayerEntity createPlayer(@RequestBody PlayerDto playerDto) {
         return service.createPlayer(playerDto);
     }
 
     @GetMapping
+    @QueryMapping
     public List<PlayerEntity> getAllPlayers() {
         return service.getAllPlayers();
     }

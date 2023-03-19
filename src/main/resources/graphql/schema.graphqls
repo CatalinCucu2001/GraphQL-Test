@@ -1,18 +1,54 @@
 # Here u can define all names: Return type methods from controllers
 type Query {
-    players: [Player]
-    games: [Game]
+    # Player Query
+    getAllPlayers: [PlayerEntity]
+
+    # Game Query
+    getAllGames: [GameEntity]
+    getAllGamesByPlayerId(playerId: ID!) : [GameEntity]
+}
+
+type Mutation {
+    # Player Query
+    createPlayer(playerDto: PlayerDto!): PlayerEntity
+
+    # Game Query
+    createGame(createGameDto: CreateGameDto!): GameEntity
+    addPlayerToGame(addPlayerDto: AddPlayerDto!): GameEntity
+    getAllGamesByPlayerId(playerId: ID!): [GameInfoDto]
 }
 
 # All entities
-type Player {
+type PlayerEntity {
     id: ID!
-    firsName: String!
+    firstName: String!
     lastName: String
 }
 
-type Game {
+type GameEntity {
     id: ID!
     name: String!
-    players: [Player]
+    players: [PlayerEntity]
 }
+
+# DTOs
+type GameInfoDto {
+    id: ID!
+    name: String!
+}
+
+# Inputs (DTOs)
+input PlayerDto {
+    firstName: String!
+    lastName: String
+}
+
+input CreateGameDto {
+    name: String!
+}
+
+input AddPlayerDto {
+    gameId: ID!
+    playerId: ID!
+}
+
